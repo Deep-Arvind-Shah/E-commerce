@@ -26,6 +26,7 @@
 
 <script>
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <!-- Bootstrap Core CSS -->
@@ -33,6 +34,9 @@
 
 <!-- Bootstrap readable css -->
 <link href="${css}/bootstrap-readable.css" rel="stylesheet">
+
+<!-- Bootstrap data table css -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -76,7 +80,25 @@
 				test="${userClickAllProducts == true or userClickCategoryProducts == true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
+
+			<!-- only when user clicks Register -->
+			<c:if test="${userClickRegister == true }">
+				<%@include file="login.jsp"%>
+			</c:if>
+
+			<!-- only when user clicks Show Products -->
+			<c:if test="${userClickShowProduct == true }">
+				<%@include file="SingleProduct.jsp"%>
+			</c:if>
+			
+			<!-- only when user clicks Manage products -->
+			<c:if test="${userClickManageProducts == true }">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
+
 		</div>
+
+
 
 		<!-- footer -->
 		<%@include file="./shared/footer.jsp"%>
@@ -87,6 +109,13 @@
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
+
+		<!-- Data tables -->
+		<script src="${js}/jquery.dataTables.js"></script>
+
+		<!-- Data tables bootstrap js -->
+		<script src="${js}/dataTables.bootstrap.js"></script>
+
 
 		<!-- self-coded javascript -->
 		<script src="${js}/myapp.js"></script>
